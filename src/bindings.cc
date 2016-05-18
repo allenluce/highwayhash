@@ -1,11 +1,7 @@
-#ifndef __AVX2__
-#error *** CPU does not support AVX2 intrinsics ***
-#endif
-
 #include <node.h>
 
 #include "nan.h"
-#include "upstream/highway_tree_hash.h"
+#include "upstream/scalar_highway_tree_hash.h"
 
 inline uint64_t AsUInt64(uint8_t const *key, uint8_t const *value, size_t const length) {
   // Convert key from uint8_t[32] to uint64_t[4]
@@ -15,7 +11,7 @@ inline uint64_t AsUInt64(uint8_t const *key, uint8_t const *value, size_t const 
   key64[2] = *reinterpret_cast<uint64_t const*>(&key[16]);
   key64[3] = *reinterpret_cast<uint64_t const*>(&key[24]);
   // Generate hash
-  return HighwayTreeHash(key64, value, length);
+  return ScalarHighwayTreeHash(key64, value, length);
 }
 
 // Convert from uint64_t to hex string

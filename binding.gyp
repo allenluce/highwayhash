@@ -2,7 +2,7 @@
   'targets': [{
     'target_name': 'highwayhash',
     'sources': [
-       'src/upstream/highway_tree_hash.cc',
+       'src/upstream/scalar_highway_tree_hash.cc',
        'src/bindings.cc'
     ],
     'include_dirs': [
@@ -12,7 +12,6 @@
       '-std=c++0x',
       '-fexceptions',
       '-Wall',
-      '-mavx2',
       '-Ofast',
       '-flto'
     ],
@@ -23,7 +22,6 @@
       'OTHER_CPLUSPLUSFLAGS': [
         '-fexceptions',
         '-Wall',
-        '-mavx2',
         '-Ofast'
       ]
     },
